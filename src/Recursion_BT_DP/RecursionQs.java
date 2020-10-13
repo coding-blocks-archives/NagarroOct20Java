@@ -1,5 +1,7 @@
 package Recursion_BT_DP;
 
+import java.util.Scanner;
+
 public class RecursionQs {
 
 	public static void main(String[] args) {
@@ -9,6 +11,10 @@ public class RecursionQs {
 		// climbStairs(0, 5, "");
 		// mazePath(0, 0, 2, 2, "");
 		// validParenthesis(0, 0, 2, "");
+		
+		Scanner scn = new Scanner(System.in) ;
+		String str = scn.next() ;
+		palindromicPartitions(str, "");
 	}
 
 	public static void PDI(int n) {
@@ -18,7 +24,7 @@ public class RecursionQs {
 		}
 
 		System.out.println("hii " + n);
-		PDI(n-1);
+		PDI(n - 1);
 		System.out.println("bye " + n);
 	}
 
@@ -85,6 +91,41 @@ public class RecursionQs {
 
 		validParenthesis(open + 1, close, n, ans + "(");
 		validParenthesis(open, close + 1, n, ans + ")");
+	}
+
+	public static void palindromicPartitions(String ques, String ans) {
+
+		if (ques.length() == 0) {
+			System.out.println(ans);
+			return;
+		}
+
+		for (int i = 1; i <= ques.length(); i++) {
+			String part = ques.substring(0, i);
+			String roq = ques.substring(i);
+
+			if (isPalindrome(part))
+				palindromicPartitions(roq, ans + part + " ");
+
+		}
+	}
+
+	public static boolean isPalindrome(String str) {
+
+		int i = 0;
+		int j = str.length() - 1;
+
+		while (i < j) {
+
+			if (str.charAt(i) != str.charAt(j)) {
+				return false;
+			}
+
+			i++;
+			j--;
+		}
+
+		return true;
 	}
 
 }
