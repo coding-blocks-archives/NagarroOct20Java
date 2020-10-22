@@ -1,4 +1,4 @@
-package LL_BT;
+package LL_BT_BST_HM;
 
 public class LinkedList {
 
